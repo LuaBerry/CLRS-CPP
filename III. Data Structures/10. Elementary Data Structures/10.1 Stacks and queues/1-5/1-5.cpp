@@ -1,6 +1,10 @@
 /*
-10. 1-4
-Rewrite ENQUEUE and DEQUEUE to detect underflow and overflow of a queue.
+10. 1-5
+Whereas a stack allows insertion and deletion of elements at only one end, and a
+queue allows insertion at one end and deletion at the other end, a deque
+(doubleended queue) allows insertion and deletion at both ends. Write four O(1)-time
+procedures to insert elements into and delete elements from both ends of a deque
+implemented by an array.
 
 */
 

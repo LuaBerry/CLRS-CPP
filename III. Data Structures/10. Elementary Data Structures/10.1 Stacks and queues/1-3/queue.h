@@ -1,5 +1,3 @@
-#include<iostream>
-
 #ifndef __QUEUE__
 #define __QUEUE__
 

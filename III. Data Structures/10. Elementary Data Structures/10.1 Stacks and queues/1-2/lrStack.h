@@ -1,5 +1,3 @@
-#include<iostream>
-
 #ifndef __LRSTACK__
 #define __LRSTACK__
 

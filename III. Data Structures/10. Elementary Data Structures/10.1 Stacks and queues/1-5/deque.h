@@ -1,5 +1,3 @@
-#include<iostream>
-
 #ifndef __DEQUE__
 #define __DEQUE__
 

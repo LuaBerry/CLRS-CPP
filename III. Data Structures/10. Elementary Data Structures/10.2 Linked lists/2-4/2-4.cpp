@@ -1,12 +1,13 @@
 /*
-Q2-1. Can you implement the dynamic-set operation INSERT
-on a singly linked list in O(1) time? How about DELETE?
+Q2-1. As written, each loop iteration in the LIST-SEARCH' procedure requires two tests:
+one for x != L.nil and one for x.key != k. Show how to eliminate the test for
+x != L.nil in each iteration.
 
-A. INSERT(L, x) operates in O(1) time.
-DELETE(L, x) operates on O(N) time because we need to locate x first.
+A.Let L.nil.key = k. Loop will end at L.nil when k is not found. Then, revert L.nil.key.
+It will reduce the coefficient of n in O(n).
 */
 
-#include"singly_linked_list.h"
+#include"cir_dbl_linked_list.h"
 #include<iostream>
 
 using namespace std;
@@ -15,7 +16,7 @@ void printConsole();
 
 int main()
 {
-    S_LList* l = new S_LList;
+    CD_LLIST* l = new CD_LLIST;
     list_initialize(l);
 
     int input = 1;
@@ -40,7 +41,7 @@ int main()
         case 3: //Search
             cout << "Input: ";
             cin >> n;
-            m = list_search_index(l, n);
+            m = list_search_index2(l, n);
             if(m > -1)
                 cout << n << " is at " << m << ".\n";
             else

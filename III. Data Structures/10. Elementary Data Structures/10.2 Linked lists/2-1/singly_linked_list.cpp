@@ -66,7 +66,10 @@ int list_search_index(S_LList* l, int x)
             n = n->next;
         }
     }
-    return i;
+    if(n)
+        return i;
+    else
+        return -1;
 }
 
 bool list_isEmpty(S_LList* l)

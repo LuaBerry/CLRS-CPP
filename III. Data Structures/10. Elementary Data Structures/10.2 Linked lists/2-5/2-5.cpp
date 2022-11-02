@@ -1,12 +1,14 @@
 /*
-Q2-1. Can you implement the dynamic-set operation INSERT
-on a singly linked list in O(1) time? How about DELETE?
+Q2-5. Implement the dictionary operations INSERT, DELETE, and SEARCH using
+singly linked, circular lists. What are the running times of your procedures?
 
-A. INSERT(L, x) operates in O(1) time.
+A. INSERT(L, x) operates in O(1) time. But, Circular singly linked list w/o sentinel(nil) requires "L.tail" to operate INSERT(L, x) in O(1) time.
+Otherwise, it will operate O(n) since it has to locate the tail.
 DELETE(L, x) operates on O(N) time because we need to locate x first.
++ Singly linked list have to locate x while Doubly linked list doesn't when Node n is given.
 */
 
-#include"singly_linked_list.h"
+#include"circ_singly_linked_list.h"
 #include<iostream>
 
 using namespace std;
@@ -15,7 +17,7 @@ void printConsole();
 
 int main()
 {
-    S_LList* l = new S_LList;
+    CL_LList* l = new CL_LList;
     list_initialize(l);
 
     int input = 1;

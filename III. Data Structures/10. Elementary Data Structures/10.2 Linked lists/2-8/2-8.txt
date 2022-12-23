@@ -1,0 +1,53 @@
+Q2-8.
+Explain how to implement doubly linked lists using only one pointer value x.np 
+per item instead of the usual two (next and prev). Assume that all pointer values 
+can be interpreted as k-bit integers, and define x.np to be x.np = x.next XOR x.prev, 
+the k-bit “exclusive-or” of x.next and x.prev. (The value NIL is represented by 0.)
+Be sure to describe what information you need to access the head of the list.
+Show how to implement the SEARCH, INSERT, and DELETE operations on such a list.
+Also show how to reverse such a list in O(1) time.
+
+A. The key idea here is A XOR (A XOR B) = B. Therefore, x.next XOR x.np(which is x.next XOR x.prev) = x.prev. And vice versa.
+So, as far as we have the address of l.head, we can access every value in the linked list.
+
+SEARCH(L, k)
+{
+    x = L.head
+    p = L.nil
+    while(x != L.nil && x.value != k)
+    {
+        temp = x
+        x = p XOR x.np
+        p = temp
+    }
+    return x
+}
+
+INSERT(L, k)
+{
+    n = new Node
+    n.value = k
+    L.nil.np = n XOR (L.nil.np XOR L.head)
+    L.head.np = n XOR (L.head.np XOR L.nil)
+    n.np = L.head XOR L.nil
+}
+
+DELETE(L, k)
+{
+    x = L.head
+    p = L.nil
+    while(x != L.nil && x.value != k)
+    {
+        temp = x
+        x = p XOR x.np
+        p = temp
+    }
+    n = (p XOR x.np)
+    p.np = (p.np XOR x) XOR n
+    n.np = p XOR (x XOR n.np)
+}
+
+REVERSE(L)
+{
+    L.head = L.nil XOR L.head
+}

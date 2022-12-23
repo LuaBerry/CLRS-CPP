@@ -1,0 +1,36 @@
+Q3-5. Let L be a doubly linked list of length n stored in arrays key, prev, and next of length m.
+Suppose that these arrays are managed by ALLOCATE-OBJECT and FREE-OBJECT procedures
+that keep a doubly linked free list F. Suppose further that of the m items,
+exactly n are on list L and m - n are on the free list. Write a procedure COMPACTIFY-LIST(L,F) that,
+given the list L and the free list F, moves the items in L so that they occupy array positions
+1, 2, ... , n and adjusts the free list F so that it remains correct, occupying array positions
+n + 1, n + 2, ... , m. The running time of your procedure should be Big-theta(n).
+and it should use only a constant amount of extra space. Argue that your procedure is correct.
+
+A. A_val, A_next, A_prev is three arrays that store every element of L and F.
+COMPACTIFY-LIST(L, F)
+{
+    SWAP-ELEMENT(A[0], A[L.head])
+    if(F.head == 0)
+        F.head = L.head
+    L.head = 0
+    x = A_next[L.head]
+    i = 1;
+    while(x != NIL)
+    {
+        SWAP-ELEMENT(A[i], A[x])
+        if(F.head == i)
+            F.head = x
+        x = A_next[x]
+        i++
+    }
+}
+
+SWAP-ELEMENT(a, b)
+{
+    swap(A_val[a], A_val[b])
+    swap(A_next[A_prev[a]], A_next[A_prev[b]])
+    swap(A_prev[A_next[a]], A_prev[A_next[b]])
+    swap(A_next[a], A_next[b])
+    swap(A_prev[a], A_prev[b])
+}

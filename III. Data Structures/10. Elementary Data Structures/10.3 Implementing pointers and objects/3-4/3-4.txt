@@ -1,0 +1,14 @@
+Q3-4. It is often desirable to keep all elements of a doubly linked list compact in storage, using,
+for example, the first m index locations in the multiple-array representation.
+(This is the case in a paged, virtual-memory computing environment.)
+Explain how to implement the procedures ALLOCATE-OBJECT and FREE-OBJECT so that the representation is compact.
+Assume that there are no pointers to elements of the linked list outside the list itself.
+(Hint: Use the array implementation of a stack.)
+
+A.
+We are already using the storage compactly when allocating an element. We use free list like a stack (Last In First Out.)
+So even there's plenty of space to store the elements in the array, we use the freed space priorly.
+But, when we free(or delete) elements continuously, the freed space might be widespread (n elements spread beyond n index.)
+
+We can solve this problem by when deleting x index element, move all x+1 ~ n element to x ~ n-1. and update all next, prev pointer.
+It takes O(n) time.

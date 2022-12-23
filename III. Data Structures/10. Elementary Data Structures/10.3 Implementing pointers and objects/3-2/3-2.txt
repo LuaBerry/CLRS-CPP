@@ -1,0 +1,23 @@
+Q3-2. Write the procedures ALLOCATE-OBJECT and FREE-OBJECT for a homogeneous
+collection of objects implemented by the single-array representation.
+
+A.
+Suppose the single-array representation for the key k is L[k] = value, L[k+1] = next, L[k+2] = prev.
+
+ALLOCATE(L)
+{
+    if free = NIL
+        error "Out of space."
+    else
+    {
+        x = free
+        free = L[free + 1]
+        return x
+    }
+}
+
+DELETE(L, x)
+{
+    L[x + 1] = free
+    free = x
+}

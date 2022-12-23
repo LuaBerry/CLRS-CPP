@@ -1,0 +1,5 @@
+Q3-3. Why don’t we need to set or reset the prev attributes of objects
+in the implementation of the ALLOCATE-OBJECT and FREE-OBJECT procedures?
+
+A. ALLOCATE-OBJECT returns the desirable index where it hasn't occupied yet. Since free list doesn't need any prev pointer,
+we don’t have to deal with that attributes. Same to the FREE-OBJECT procedure, free list doesn't use the prev pointer.

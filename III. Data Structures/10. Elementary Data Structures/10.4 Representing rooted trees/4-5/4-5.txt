@@ -1,0 +1,33 @@
+Q4-5. Write an O(n) time nonrecursive procedure that, given an n-node binary tree,
+prints out the key of each node in the tree. use no more than constant extra space
+outside of the tree itself and do not modify the tree, even temporarily, during the procedure.
+
+A.
+PRINT_TREE(T)
+{
+    prev = NIL
+    n = T.root
+    while(n != NIL)
+    {
+        if(prev == n.p)
+        {
+            print(n)
+            prev = n
+
+            if(n.left != NIL) n = n.left
+            else if(n.right != NIL) n = n.right
+            else n = n.p
+        }
+        else if(prev == n.left && n.right != NIL)
+        {
+            prev = n
+            n = n.right
+        }
+        else
+        {
+            prev = n
+            n = n.p
+        }
+    }
+}
+

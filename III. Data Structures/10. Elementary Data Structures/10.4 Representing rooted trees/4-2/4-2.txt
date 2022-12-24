@@ -1,0 +1,18 @@
+Q4-2. Write an O(n)time recursive procedure that,
+given an n-node binary tree, prints out the key of each node in the tree.
+
+A.
+PRINT_TREE(T)
+{
+    PRINT_NODE(T.root)
+}
+
+PRINT_NODE(N)
+{
+    if(N == NIL)
+        return
+    
+    PRINT_NODE(N.left)
+    print(N.key)
+    PRINT_NODE(N.right)
+}

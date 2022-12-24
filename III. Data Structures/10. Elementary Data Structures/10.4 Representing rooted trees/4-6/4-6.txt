@@ -1,0 +1,28 @@
+Q4-6. The left-child, right-sibling representation of an arbitrary rooted tree
+uses three pointers in each node: left-child, right-sibling, and parent. From any node,
+its parent can be reached and identified in constant time and all its children can be
+reached and identified in time linear in the number of children. Show how to use
+only two pointers and one boolean value in each node so that the parent of a node or
+all of its children can be reached and identified in time linear in the number of children.
+
+A.
+
+Node
+{
+    int key
+    Node* left //Left child
+    Node* right //Right sibling (if it's rightmost, it points to the parent node)
+    bool isRightmost
+}
+
+Reaching to the child node is same with 3 pointers tree.
+When reaching to the parent node, we go thru all sibling til it's rightmost, and go to parent node.
+
+SEARCH_PARENT(N)
+{
+    while(!N.isRightmost)
+    {
+        N = N.right
+    }
+    return N.right
+}

@@ -1,0 +1,18 @@
+Q4-4. Write an O(n) time procedure that prints all the keys of an arbitrary rooted tree
+with n nodes, where the tree is stored using the left-child, right-sibling representation.
+
+A. 
+
+PRINT_TREE(T)
+{
+    PRINT_NODE(T.root)
+}
+
+PRINT_NODE(N)
+{
+    if(N == NIL)
+        return
+    PRINT_NODE(N.left)
+    print(N)
+    PRINT_NODE(N.right)
+}

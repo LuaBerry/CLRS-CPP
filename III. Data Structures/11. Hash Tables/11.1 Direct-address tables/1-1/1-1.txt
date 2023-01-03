@@ -1,0 +1,19 @@
+Q1-1. Suppose that a dynamic set S is represented by a direct-address table T of length m.
+Describe a procedure that finds the maximum element of S.
+What is the worst-case performance of your procedure?
+
+A.
+MAXIMUM(T)
+{
+    i = m-1
+    while(0 <= i)
+    {
+        if(T[i] != NIL)
+            return i
+        else
+            i = i + 1
+    }
+
+    return NIL
+}
+worst-case is when max value is 0 or NIL, therefore, this procedure's worst performance is O(m).

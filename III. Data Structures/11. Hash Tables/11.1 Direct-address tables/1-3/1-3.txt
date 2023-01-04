@@ -1,0 +1,30 @@
+Q1-3. Suggest how to implement a direct-address table in which the keys of stored
+elements do not need to be distinct and the elements can have satellite data.
+All three dictionary operations (INSERT, DELETE, and SEARCH) should run in O(1) time.
+(Don’t forget that DELETE takes as an argument a pointer to an object to be deleted, not a key.)
+
+A. We can use 'chaining' since there's collision - two keys to same spot.
+The arrays of doubly linked list can resolve this problem.
+
+INSERT(T, k, data)
+{
+    Node n = new Node(data)
+
+    T[k].head.prev = n
+    n.next = T[k].head
+
+    T[k].head = n
+}
+
+SEARCH(T, k)
+{
+    return T[k].head
+}
+
+DELETE(n)
+{
+    x.prev.next = x.next
+    x.next.prev = x.prev
+
+    delete x
+}

@@ -1,0 +1,38 @@
+Q1-4. We wish to implement a dictionary by using direct addressing on a huge array.
+At the start, the array entries may contain garbage, and initializing the entire array
+is impractical because of its size. Describe a scheme for implementing a direct-address
+dictionary on a huge array. Each stored object should use O(1) space; the operations
+SEARCH, INSERT, and DELETE should take O(1) time each; and initializing the data structure
+should take O(1) time. (Hint: Use an additional array, treated somewhat like a stack whose 
+size is the number of keys actually stored in the dictionary, to help determine whether a 
+given entry in the huge array is valid or not.)
+
+A. We can use stack S as a stack of keys in the table.
+
+Stack S
+
+INITIALIZE(T, n)
+{
+    Data* T = new Data[n]
+    S = new Stack()
+}
+
+INSERT(T, x)
+{
+    T[x.key] = x
+    Push(S, x.key)
+}
+
+SEARCH(T, x)
+{
+    k = SEARCH(S, x.key)
+    if(k != NIL)
+        return T[x.key]
+    else
+        return NIL
+}
+
+DELETE(T, x)
+{
+
+}

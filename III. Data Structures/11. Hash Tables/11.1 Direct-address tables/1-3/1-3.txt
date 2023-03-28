@@ -6,22 +6,21 @@ All three dictionary operations (INSERT, DELETE, and SEARCH) should run in O(1) 
 A. We can use 'chaining' since there's collision - two keys to same spot.
 The arrays of doubly linked list can resolve this problem.
 
-INSERT(T, k, data)
+INSERT(T, x)
 {
-    Node n = new Node(data)
 
-    T[k].head.prev = n
-    n.next = T[k].head
+    T[x.key].head.prev = x
+    x.next = T[x.key].head
 
-    T[k].head = n
+    T[x.key].head = n
 }
 
-SEARCH(T, k)
+SEARCH(T, x)
 {
-    return T[k].head
+    return T[x.key].head
 }
 
-DELETE(n)
+DELETE(T, x)
 {
     x.prev.next = x.next
     x.next.prev = x.prev
